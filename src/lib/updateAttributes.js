@@ -14,7 +14,10 @@ export function updateAttributes($el, prevNode, newNode) {
     Object.keys(newNode).forEach((prop) => {
       prop.startsWith("on")
         ? addEvent($el, prop.slice(2).toLowerCase(), newNode[prop])
-        : $el.setAttribute(prop, newNode[prop]);
+        : $el.setAttribute(
+            prop === "className" ? "class" : prop,
+            newNode[prop],
+          );
     });
   }
 }
